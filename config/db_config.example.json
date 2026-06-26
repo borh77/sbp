@@ -1,0 +1,12 @@
+{
+  "mongo_uri": "mongodb://localhost:27017",
+  "database_v1": "digital_burnout_v1",
+  "database_v2": "digital_burnout_v2",
+  "csv_path": "data/digital_burnout_productivity_dataset_5M.csv",
+  "batch_size": 5000,
+  "limit_rows": 100000,
+  "late_night_binary_positive_value": 1,
+  "late_night_high_threshold": 6,
+  "late_night_high_threshold_normalized": 0.6,
+  "low_productivity_score_threshold": 56
+}

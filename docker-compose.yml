@@ -1,0 +1,74 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: sbp-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: sbp-mongo-express
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_PORT: "27017"
+      ME_CONFIG_MONGODB_URL: mongodb://mongo:27017/
+      ME_CONFIG_BASICAUTH: "false"
+
+  sbp-app:
+    build:
+      context: .
+    container_name: sbp-app
+    depends_on:
+      mongo:
+        condition: service_healthy
+    working_dir: /app
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./results:/app/results
+    environment:
+      PYTHONUNBUFFERED: "1"
+    command: ["sh", "-c", "tail -f /dev/null"]
+
+  mongosh:
+    image: mongo:7
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: ["mongosh", "mongodb://mongo:27017"]
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: sbp-metabase
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - metabase_data:/metabase-data
+    environment:
+      MB_DB_FILE: /metabase-data/metabase.db
+
+volumes:
+  mongo_data:
+  metabase_data:
