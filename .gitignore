@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+**pycache**/
 *.py[cod]
 *$py.class
 *.pyo
@@ -30,6 +31,7 @@ data/
 *.7z
 
 # Large/generated Mongo exports
+mongo_data/
 *.bson
 *.jsonl
 *.ndjson

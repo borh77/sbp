@@ -1,0 +1,16 @@
+data/
+*.csv
+*.zip
+.venv/
+venv/
+__pycache__/
+**/__pycache__/
+**pycache**/
+.git/
+results/query_outputs/*
+!results/query_outputs/.gitkeep
+results/metabase_screenshots/*
+!results/metabase_screenshots/.gitkeep
+mongo_data/
+*.log
+config/db_config.json
