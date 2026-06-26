@@ -1,0 +1,51 @@
+{
+  "v1_users": {
+    "user_id": 1001,
+    "age": 29,
+    "occupation": "Product Manager",
+    "work_mode": "Hybrid",
+    "device_usage_type": "Work-Centric"
+  },
+  "v1_wellbeing_assessments": {
+    "user_id": 1001,
+    "digital_behavior": {
+      "daily_screen_time": 8.5,
+      "social_media_hours": 2.3,
+      "doomscrolling_duration": 1.8,
+      "app_switch_frequency": 42,
+      "notification_count": 96,
+      "smartphone_unlocks": 74,
+      "late_night_device_usage": 1
+    },
+    "focus_productivity": {
+      "focus_sessions": 3,
+      "deep_work_hours": 2.0,
+      "distraction_frequency": 6,
+      "task_completion_rate": 78,
+      "concentration_score": 7
+    },
+    "health_wellness": {
+      "sleep_hours": 6.7,
+      "sleep_quality": 6,
+      "caffeine_intake": 2,
+      "physical_activity": 4.2,
+      "stress_level": 7
+    },
+    "work_environment": {
+      "workspace_quality": 8,
+      "meeting_hours": 3.5,
+      "internet_stability": 9,
+      "remote_work_days": 3
+    },
+    "burnout_result": {
+      "motivation_level": 6,
+      "mental_fatigue": 7,
+      "emotional_exhaustion": 5,
+      "work_satisfaction": 6,
+      "mental_state": "Balanced",
+      "burnout_risk": 64,
+      "productivity_score": 72,
+      "productivity_category": "Medium"
+    }
+  }
+}
